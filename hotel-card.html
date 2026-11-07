@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .hotel-search{
+                padding: 20px;
+                border: 1px solid #cccccc;
+                background-color: #cbc4f3;
+            }
+            .hotel-search label {
+                display: block;
+                margin-bottom: 8px;
+            }
+            .search-input{
+                padding: 8px;
+            }
+            .search-field{
+                margin-bottom: 12px;
+            }
+        </style>
+        <script src="./search.js" defer></script>
+        <title>StayLite</title>
+    </head>
+    <body>
+        <main>
+            <h1>StayLite</h1>
+            <section class="hotel-search">
+                <h2>ค้นหาที่พัก</h2>
+                <form>
+                    <div class="search-field">
+                        <label for="destination">เมืองหรือชื่อที่พัก</label>
+                        <input id="destination" name="destination" class="search-input" type="text" required>
+                    </div>
+                    <div class="search-field">
+                        <label for="check-in">วันเข้าพัก</label>
+                        <input id="check-in" name="checkIn" class="search-input" type="date" required>
+                    </div>
+                    <div class="search-field">
+                        <label for="check-out">วันออก</label>
+                        <input id="check-out" name="checkOut" class="search-input" type="date" required>
+                    </div>
+                    <button type="submit">ค้นหา</button>
+                </form>
+            </section>
+        </main>
+        <article>
+            <h2>River Stay</h2>
+            <p class="city">Bangkok</p>
+            <p class="price">1200 บาท / คืน</p>
+            <p class="reviewscore">คะแนนรีวิว 8.5 / 10</p>
+            <p class="available">มีห้องว่าง</p>
+            <button type="button">ดูรายละเอียด</button>
+        </article>
+    </body>
+</html>

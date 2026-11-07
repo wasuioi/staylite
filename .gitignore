@@ -1,0 +1,9 @@
+/.rea-browser-profile/
+/node-modules/
+/work/
+/find_available_hotels.js
+/find_available.ts
+/hotel_practice.ts
+/optional_properties.ts
+/type_narrowing.ts
+/uniontype.ts
