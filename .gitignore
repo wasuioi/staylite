@@ -1,5 +1,5 @@
 /.rea-browser-profile/
-/node-modules/
+/node_modules/
 /work/
 /find_available_hotels.js
 /find_available.ts
