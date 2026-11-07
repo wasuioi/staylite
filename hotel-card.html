@@ -18,6 +18,11 @@
             .search-field{
                 margin-bottom: 12px;
             }
+            .hotel-result{
+                border: 1px solid #000000;
+                padding: 12px;
+                margin-bottom: 8px;
+            }
         </style>
         <script src="./search.js" defer></script>
         <title>StayLite</title>
@@ -27,9 +32,9 @@
             <h1>StayLite</h1>
             <section class="hotel-search">
                 <h2>ค้นหาที่พัก</h2>
-                <form>
+                <form id="search-form">
                     <div class="search-field">
-                        <label for="destination">เมืองหรือชื่อที่พัก</label>
+                        <label for="destination">เมือง</label>
                         <input id="destination" name="destination" class="search-input" type="text" required>
                     </div>
                     <div class="search-field">
@@ -42,6 +47,8 @@
                     </div>
                     <button type="submit">ค้นหา</button>
                 </form>
+                <p id="search-summary"></p>
+                <ul id="hotel-results"></ul>
             </section>
         </main>
         <article>
