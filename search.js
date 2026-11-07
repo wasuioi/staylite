@@ -10,6 +10,8 @@ checkInInput.addEventListener("change", () => {
     }
     nextDate.setUTCDate(nextDate.getUTCDate()+1)
     checkOutInput.min = nextDate.toISOString().slice(0,10)
-        console.log(checkOutInput.min)
+    if(checkOutInput.value !== "" && checkOutInput.min > checkOutInput.value)
+        checkOutInput.value = ""
+    console.log(checkOutInput.min)
     
 });
