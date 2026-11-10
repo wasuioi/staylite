@@ -1,13 +1,18 @@
+import { searchHotels } from "./work/build/hotel-search.js";
+
 const checkInInput = document.querySelector("#check-in")
 const checkOutInput = document.querySelector("#check-out")
 const searchForm = document.querySelector("#search-form")
 const destinationInput = document.querySelector("#destination")
 const searchSummary = document.querySelector("#search-summary")
 const hotelResults = document.querySelector("#hotel-results")
+const maxPriceInput= document.querySelector("#max-price")
+
+
 
 const hotels = [
-    {name: "Siam", city: "Bangkok"},
-    {name: "Some Where", city: "Chiang Mai"}
+    {name: "Siam", city: "Bangkok", price: 100},
+    {name: "Some Where", city: "Chiang Mai", price: 50}
 ]
 
 checkInInput.addEventListener("change", () => {
@@ -28,9 +33,16 @@ checkInInput.addEventListener("change", () => {
 searchForm.addEventListener("submit", (event) => {
     event.preventDefault()
 
-    const destination = destinationInput.value;
+    const destination = destinationInput.value
+    const maxPrice = maxPriceInput.valueAsNumber
+    const criteria = { city: destination }
+
+    if(!Number.isNaN(maxPrice)) {
+        criteria.maxPrice = maxPrice
+    }
+
     searchSummary.textContent = `ผลการค้นหาสำหรับ ${destination}`
-    const matchingHotels = hotels.filter((hotel) => hotel.city === destination)
+    const matchingHotels = searchHotels(hotels, criteria)
     console.log(matchingHotels)
 
     hotelResults.textContent = "";
@@ -51,4 +63,8 @@ searchForm.addEventListener("submit", (event) => {
             hotelResults.append(item)
         }
     }
+    console.log(maxPriceInput.value, typeof maxPriceInput.value)
+    console.log(maxPriceInput.valueAsNumber, typeof
+        maxPriceInput.valueAsNumber
+    )
 })

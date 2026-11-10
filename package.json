@@ -4,6 +4,7 @@
   "description": "",
   "main": "find_available_hotels.js",
   "scripts": {
+    "build": "tsc hotel-search.ts --target ES2022 --module ES2022 --outDir work/build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
