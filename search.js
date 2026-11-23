@@ -1,4 +1,5 @@
 import { searchHotels } from "./work/build/hotel-search.js";
+import { hotels } from "./hotels.js"
 
 const checkInInput = document.querySelector("#check-in")
 const checkOutInput = document.querySelector("#check-out")
@@ -8,14 +9,6 @@ const searchSummary = document.querySelector("#search-summary")
 const hotelResults = document.querySelector("#hotel-results")
 const maxPriceInput= document.querySelector("#max-price")
 const availableOnlyInput = document.querySelector("#available-only")
-
-
-
-const hotels = [
-    {name: "Siam", city: "Bangkok", price: 100, available: true},
-    {name: "silom", city: "Bangkok", price: 100, available: false},
-    {name: "Some Where", city: "Chiang Mai", price: 50, available: true}
-]
 
 checkInInput.addEventListener("change", () => {
     console.log(checkInInput.value)
@@ -70,7 +63,11 @@ searchForm.addEventListener("submit", (event) => {
             const availability = document.createElement("p")
             availability.textContent = hotel.available ? "มีห้องว่าง" : "ห้องเต็ม";
 
-            item.append(name,city,price,availability)
+            const detailLink = document.createElement("a")
+            detailLink.textContent = "ดูรายละเอียด"
+            detailLink.href = `./hotel-detail.html?id=${hotel.id}`;
+
+            item.append(name,city,price,availability,detailLink)
             hotelResults.append(item)
         }
     }
