@@ -7,12 +7,14 @@ const destinationInput = document.querySelector("#destination")
 const searchSummary = document.querySelector("#search-summary")
 const hotelResults = document.querySelector("#hotel-results")
 const maxPriceInput= document.querySelector("#max-price")
+const availableOnlyInput = document.querySelector("#available-only")
 
 
 
 const hotels = [
-    {name: "Siam", city: "Bangkok", price: 100},
-    {name: "Some Where", city: "Chiang Mai", price: 50}
+    {name: "Siam", city: "Bangkok", price: 100, available: true},
+    {name: "silom", city: "Bangkok", price: 100, available: false},
+    {name: "Some Where", city: "Chiang Mai", price: 50, available: true}
 ]
 
 checkInInput.addEventListener("change", () => {
@@ -35,7 +37,10 @@ searchForm.addEventListener("submit", (event) => {
 
     const destination = destinationInput.value
     const maxPrice = maxPriceInput.valueAsNumber
-    const criteria = { city: destination }
+    const criteria = {
+        city: destination,
+        availableOnly: availableOnlyInput.checked
+    }
 
     if(!Number.isNaN(maxPrice)) {
         criteria.maxPrice = maxPrice
@@ -59,7 +64,13 @@ searchForm.addEventListener("submit", (event) => {
             const city = document.createElement("p")
             city.textContent = hotel.city
 
-            item.append(name,city)
+            const price = document.createElement("p")
+            price.textContent = `${hotel.price} บาทต่อคืน`
+
+            const availability = document.createElement("p")
+            availability.textContent = hotel.available ? "มีห้องว่าง" : "ห้องเต็ม";
+
+            item.append(name,city,price,availability)
             hotelResults.append(item)
         }
     }
@@ -67,4 +78,6 @@ searchForm.addEventListener("submit", (event) => {
     console.log(maxPriceInput.valueAsNumber, typeof
         maxPriceInput.valueAsNumber
     )
+
+    console.log(availableOnlyInput.checked)
 })
